@@ -1,0 +1,39 @@
+<%@ var body: String %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>HotTalk</title>
+        <link rel="stylesheet" href="css/jquery.mobile-1.1.1.min.css" />
+        <link rel="stylesheet" href="css/setting.css" />
+        <script type="text/javascript" charset="utf-8" src="js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.1.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/jquery.flicksimple.js"></script>
+        <script type="text/javascript"></script>
+    </head>
+    <body>
+        <div data-role="page" id="page1">
+            <div data-theme="a" data-role="header">
+                <h3><a href="done.html" style="text-decoration:none;color:white">HotTalk</a></h3>
+            </div>
+            ${unescape(body)}
+            <div data-role="footer">
+                <table>
+                    <tr>
+                        <td align="center"><img onclick="document.location='/'" widht="32px" height="32px" src="images/53-house.png" />
+                        <br />
+                        <span style="color: #999999; font-size: smaller">ホーム</span></td>
+                        <td align="center"><img onclick="document.location='/new'" widht="32px" height="32px" src="images/09-chat-2.png" />
+                        <br />
+                        <span style="color: #999999; font-size: smaller">登録</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script>
+            //App custom javascript
+        </script>
+
+    </body>
+</html>

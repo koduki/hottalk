@@ -28,9 +28,16 @@ class WebFront extends BasicServlet {
   //  val feeds = Books(config).getFeeds(Providers.bookWalker, 8) ++ Books(config).getFeeds(Providers.paburi, 8) ++ Books(config).getFeeds(Providers.eBookJapan, 8)
   //  val bookCount = BookDao.count()
 
-    jade("index","title" -> "Top:")
+    ssp("index","title" -> "Top:")
   }
+  
+  get("/new") {
 
+  //  val feeds = Books(config).getFeeds(Providers.bookWalker, 8) ++ Books(config).getFeeds(Providers.paburi, 8) ++ Books(config).getFeeds(Providers.eBookJapan, 8)
+  //  val bookCount = BookDao.count()
+
+    ssp("new","title" -> "Top:")
+  }
   notFound {
     findTemplate(requestPath) map { path =>
       contentType = "text/html"

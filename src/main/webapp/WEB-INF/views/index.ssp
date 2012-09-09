@@ -1,0 +1,43 @@
+<div data-role="content" style="padding: 15px">
+    <form action="">
+        <ul data-role="listview" data-divider-theme="" data-inset="true">
+            <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-d ui-corner-top">
+                <span onclick="document.location='show.html'">スタートアップウィークエンド</span>
+            </li>
+            <li data-role="fieldcontain">
+                <table>
+                    <tr>
+                        <td><img widht＝"42px" height="42px" onclick="document.location='user.html'" src="miwa.jpg"></td>
+                        <td><span style="color: green">現在 4人 (最小5人)</span></td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img widht＝"42px" height="42px" src="c621402t.jpg" /></td>
+                        <td colspan="2"><h4>いなたや パレスビル店</h4><span> 東京都千代田区丸の内1-1-1 B1F </span>
+                        <p style="margin-top: 10px">
+                            三日間の想いを熱く語り合いませんか！？
+                        </p></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+        <ul data-role="listview" data-divider-theme="" data-inset="true">
+            <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-d ui-corner-top">
+                <span onclick="document.location='show.html'">レッドブルガールを語る</span>
+            </li>
+            <li data-role="fieldcontain">
+                <table>
+                    <tr>
+                        <td><img onclick="document.location='user.html'" src="fb_nakada.jpeg"><td><span style="color: green">現在 1人 (最小3人) </span></td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img widht＝"62px" height="42px" src="kbct900t.jpeg" /></td>
+                        <td colspan="2"><h4>八剣伝</h4><span> 東京都千代田区丸の内1-1-1 パレスビル</span>
+                        <p style="margin-top: 10px">
+                            当然乾杯はレッドブルです。
+                        </p></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+    </form>
+</div>

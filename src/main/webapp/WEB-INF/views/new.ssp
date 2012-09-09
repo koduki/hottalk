@@ -1,0 +1,87 @@
+<div data-role="page" id="page1">
+    <div data-theme="a" data-role="header">
+        <h3>HotTalk</h3>
+    </div>
+    <div data-role="content" style="padding: 15px">
+        <form action="">
+            <div data-role="fieldcontain">
+                <label for="name">タイトル:</label>
+                <input type="text" name="name" id="name" value="" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">イベント場所:</label>
+                <input type="text" name="name" id="name" value="" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">タグ:</label>
+                <input type="text" name="name" id="name" value="" />
+            </div>
+            <label for="textarea">説明:</label>
+            <textarea name="textarea" id="textarea"></textarea>
+    </div>
+    <div data-role="fieldcontain">
+        <label for="name">最小人数:</label>
+        <select name="select-choice-min" id="select-choice-min" data-mini="true">
+            <option value="2">2<option><option value="3">3</option>
+            <option value="4">4</option>
+            <option value="4">5</option>
+            <option value="4">6</option>
+            <option value="4">7</option>
+            <option value="4">8</option>
+            <option value="4">9</option>
+            <option value="4">10</option>
+            <option value="4">11</option>
+            <option value="4">12</option>
+            <option value="4">13</option>
+            <option value="4">14</option>
+            <option value="4">15</option>
+        </select>
+    </div>
+    <div data-role="fieldcontain">
+        <label for="name">最大人数:</label>
+        <select name="select-choice-min" id="select-choice-min" data-mini="true">
+            <option value="2">2<option><option value="3">3</option>
+            <option value="4">4</option>
+            <option value="4">5</option>
+            <option value="4">6</option>
+            <option value="4">7</option>
+            <option value="4">8</option>
+            <option value="4">9</option>
+            <option value="4">10</option>
+            <option value="4">11</option>
+            <option value="4">12</option>
+            <option value="4">13</option>
+            <option value="4">14</option>
+            <option value="4">15</option>
+        </select>
+        <div data-role="fieldcontain">
+            <label for="name">開始時間:</label>
+            <input type="time" name="time" id="time" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+        </div>
+        <div data-role="fieldcontain">
+            <label for="name">終了時間:</label>
+            <input type="time" name="time" id="time" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+        </div>
+        <div data-role="fieldcontain">
+            <label for="name">集合場所:</label>
+            <input type="text" name="name" id="name" value="" />
+        </div>
+        </form>
+    </div>
+    <button>
+        登録する
+    </button>
+    <div data-role="footer">
+        <table>
+            <tr>
+                <td align="center"><img onclick="document.location='index.html'" widht="32px" height="32px" src="53-house.png" />
+                <br />
+                <span style="color: #999999; font-size: smaller">ホーム</span></td>
+                <td align="center"><img onclick="document.location='new.html'" widht="32px" height="32px" src="09-chat-2.png" />
+                <br />
+                <span style="color: #999999; font-size: smaller">登録</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
