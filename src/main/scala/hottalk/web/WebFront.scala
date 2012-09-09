@@ -20,7 +20,7 @@ import com.novus.salat.annotations._
 import com.novus.salat.global._
 
 class WebFront extends BasicServlet {
-  val config = ConfigReader[MyConfig]("config.scala")
+//  val config = ConfigReader[MyConfig]("config.scala")
 
   get("/") {
     info("development mode is " + isDevelopmentMode)

@@ -4,7 +4,7 @@ p
   | e-Ndex へ ようこそ.
   br/
   | タイトルをベースとした自動登録をベースとした電子書籍のソーシャルインデックスサービスです.
-p 現在、保管されている電子書籍は #{bookCount} 冊.
+p 現在、保管されている電子書籍は
 form#search{:action => "/search", :method => "get"}
   input#q{:type => "text", :name => "q"} 
   input{:type =>"submit", :value => "search"}
@@ -12,18 +12,3 @@ form#search{:action => "/search", :method => "get"}
 section#feeds
   header
     h2 新着一覧
-  - for(feed <- feeds)
-    section.feed
-      h2 
-        a(href="#{feed._1._1.url}") #{feed._1._2} - #{feed._1._1.name}
-      span
-        .news 
-          a(href="/news/#{feed._1._1.name}") もっと見る
-      ul
-        - for(item <- feed._2)
-          li
-            a(href="/books/#{item.id}")
-              img(src="#{item.image.large}")
-            article
-              h3
-                a(href="/books/#{item.id}") #{item.title} 
