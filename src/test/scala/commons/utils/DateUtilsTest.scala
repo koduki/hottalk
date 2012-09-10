@@ -28,6 +28,16 @@ class DateUtilsTest extends WordSpec with ShouldMatchers {
     }
   }
 
+  "time" should {
+    "time '00:21'" in {
+      time(0, 21).year should be(today.year)
+      time(0, 21).month should be(today.month)
+      time(0, 21).date should be(today.date)
+      time(0, 21).hour should be(0)
+      time(0, 21).minute should be(21)
+    }
+  }
+    
   "RichDate" when {
     "(2011,12,1)" should {
       val d = date(2011, 12, 1)

@@ -10,11 +10,11 @@ import com.mongodb.casbah.MongoConnection
 import java.util.Date
 
 case class Event(
-  @Key("_id") id: ObjectId = new ObjectId,
+//  @Key("_id") id: ObjectId = new ObjectId,
   val title: String,
   val detail: String,
-  val minNumber: String,
-  val maxNumber: String,
+  val minNumber: Int,
+  val maxNumber: Int,
   val place: String,
   val startDatetime: Date,
   val endDatetime: Date) {

@@ -3,7 +3,6 @@ package cn.orz.pascal.hottalk.web
 import org.scalatra._
 import java.net.URL
 import scalate.ScalateSupport
-
 import cn.orz.pascal.hottalk.models._
 import cn.orz.pascal.hottalk.config._
 import cn.orz.pascal.commons.utils.LoggingSupport
@@ -18,6 +17,7 @@ import com.novus.salat.global._
 import com.novus.salat._
 import com.novus.salat.annotations._
 import com.novus.salat.global._
+import java.util.Date
 
 class WebFront extends BasicServlet {
 //  val config = ConfigReader[MyConfig]("config.scala")
@@ -31,13 +31,30 @@ class WebFront extends BasicServlet {
     ssp("index","title" -> "Top:")
   }
   
-  get("/new") {
+  get("/events/new") {
 
   //  val feeds = Books(config).getFeeds(Providers.bookWalker, 8) ++ Books(config).getFeeds(Providers.paburi, 8) ++ Books(config).getFeeds(Providers.eBookJapan, 8)
   //  val bookCount = BookDao.count()
 
     ssp("new","title" -> "Top:")
   }
+  
+  post("/events/create"){
+    println(params("title"))
+//?title=&detail=&min_number=2&max_number=2&startdate=13%3A00&enddate=13%3A00&place=
+    val event = Event(
+        params("title"), 
+        params("detail"), 
+        params("min_number").toInt, 
+        params("min_number").toInt, 
+        params("place"), 
+        new Date(), 
+        new Date())
+    EventDao.save(event)
+    
+    redirect("/")
+  }
+  
   notFound {
     findTemplate(requestPath) map { path =>
       contentType = "text/html"

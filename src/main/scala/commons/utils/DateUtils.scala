@@ -12,6 +12,19 @@ object DateUtils {
     format.parse("%d%2d%2d%2d%2d%2d" format (year, month, date, hour, minute, second))
   }
 
+  def time(hour: Int, minute: Int) = {
+    import java.util.Calendar._
+    val calendar = Calendar.getInstance()
+    calendar.setLenient(false)
+
+    calendar.set(HOUR_OF_DAY, hour)
+    calendar.set(MINUTE, minute)
+    calendar.set(SECOND, 0)
+    calendar.set(MILLISECOND, 0)
+
+    calendar.getTime()
+  }
+
   def today() = {
     import java.util.Calendar._
     dateTrim(Calendar.getInstance().getTime())
