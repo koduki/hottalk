@@ -39,6 +39,8 @@ libraryDependencies += "net.debasishg" %% "sjson" % "0.17"
 
 libraryDependencies += "org.scala-tools.time" % "time_2.9.1" % "0.5"
 
+libraryDependencies += "org.scribe" % "scribe" % "1.3.2"
+
 resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
 
 resolvers += "Sonatype OSS Public" at "http://oss.sonatype.org/content/groups/public/"
@@ -48,4 +50,3 @@ resolvers += "repo.novus rels" at "http://repo.novus.com/releases/"
 resolvers += "repo.novus snaps" at "http://repo.novus.com/snapshots/"
 
 resolvers += "T repo" at "http://maven.twttr.com/"
-
