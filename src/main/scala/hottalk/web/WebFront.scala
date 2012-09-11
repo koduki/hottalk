@@ -31,12 +31,12 @@ class WebFront extends BasicServlet {
   get("/events/new") {
     ssp("new", "title" -> "Top:")
   }
-  
-    get("/events/:oid") {
+
+  get("/event/:oid") {
     val oid = new ObjectId(params("oid"))
     val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }
-        ssp("show", "title" -> "Top:", "event" -> event)
-    }
+    ssp("show", "title" -> "Top:", "event" -> event)
+  }
 
   post("/events/create") {
     val startdate = params("startdate").split(":").map(_.toInt)
@@ -48,9 +48,18 @@ class WebFront extends BasicServlet {
       maxNumber = params("min_number").toInt,
       place = params("place"),
       startDatetime = time(startdate(0), startdate(1)),
-      endDatetime = time(enddate(0), enddate(1)))
+      endDatetime = time(enddate(0), enddate(1)),
+      owner = User("testuser01"),
+      users = Set(User("testuser02"), User("testuser03")))
     EventDao.save(event)
 
+    redirect("/")
+  }
+
+  post("/events/join/:oid") {
+    val oid = new ObjectId(params("oid"))
+    val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }
+    EventDao.save(event.join(User("user05", "", "")))
     redirect("/")
   }
 
