@@ -24,11 +24,8 @@ class WebFront extends BasicServlet {
 
   get("/") {
     info("development mode is " + isDevelopmentMode)
-
-  //  val feeds = Books(config).getFeeds(Providers.bookWalker, 8) ++ Books(config).getFeeds(Providers.paburi, 8) ++ Books(config).getFeeds(Providers.eBookJapan, 8)
-  //  val bookCount = BookDao.count()
-
-    ssp("index","title" -> "Top:")
+    val events = EventDao.find(MongoDBObject()).toList
+    ssp("index","title" -> "Top:", "events" -> events)
   }
   
   get("/events/new") {
@@ -40,16 +37,16 @@ class WebFront extends BasicServlet {
   }
   
   post("/events/create"){
-    println(params("title"))
-//?title=&detail=&min_number=2&max_number=2&startdate=13%3A00&enddate=13%3A00&place=
+    val startdate = params("startdate").split(":").map(_.toInt)
+    val enddate = params("enddate").split(":").map(_.toInt)
     val event = Event(
         params("title"), 
         params("detail"), 
         params("min_number").toInt, 
         params("min_number").toInt, 
         params("place"), 
-        new Date(), 
-        new Date())
+        time(startdate(0), startdate(1)), 
+        time(enddate(0), enddate(1)))
     EventDao.save(event)
     
     redirect("/")
