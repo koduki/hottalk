@@ -4,7 +4,7 @@
     <form action="">
         <ul data-role="listview" data-divider-theme="" data-inset="true">
             <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-d ui-corner-top">
-                <span onclick="document.location='show.html'">${event.title}</span>
+                <span onclick="document.location='/events/${event.id}'">${event.title}</span>
             </li>
             <li data-role="fieldcontain">
                 <table>
