@@ -14,6 +14,7 @@
         <div data-role="page" id="page1">
             <div data-theme="a" data-role="header">
                 <h3><a href="/" style="text-decoration:none;color:white">HotTalk</a></h3>
+                  <a onclick="document.location='/login'">Facebookでログイン</a>
             </div>
             ${unescape(body)}
             <div data-role="footer">

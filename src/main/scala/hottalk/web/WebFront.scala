@@ -38,6 +38,48 @@ class WebFront extends BasicServlet {
     ssp("show", "title" -> "Top:", "event" -> event)
   }
 
+  get("/login") {
+    import org.scribe.oauth._
+    import org.scribe.builder.api._
+    import org.scribe.builder._
+    import org.scribe.model._
+
+    val callbackUrl = "http://localhost:8080/facebook/callback"
+    val service = new ServiceBuilder().provider((new FacebookApi).getClass).apiKey("361347227278534").apiSecret("817a2ff8fe2d99045406ad5ea33828a0").callback(callbackUrl).build
+    val redirectUrl = service.getAuthorizationUrl(null)
+    session("service") = service
+    redirect(redirectUrl)
+  }
+
+  get("/facebook/callback") {
+    import org.scribe.oauth._
+    import org.scribe.builder.api._
+    import org.scribe.builder._
+    import org.scribe.model._
+    val service = session("service").asInstanceOf[org.scribe.oauth.OAuthService]
+    val code = params("code")
+
+    val verifier = new Verifier(code)
+
+    val token = service.getAccessToken(null, verifier)
+    val request = new OAuthRequest(Verb.GET, "https://graph.facebook.com/me?fields=picture,name,link")
+    service.signRequest(token, request)
+
+    val response = request.send()
+    
+    import scala.util.parsing.json.JSON;
+    val user = JSON.parseFull(response.getBody())  match {case Some(x) => x; case None => ""}
+    val name = user.asInstanceOf[Map[String, String]]("name")
+    val link = user.asInstanceOf[Map[String, String]]("link")
+    val id = user.asInstanceOf[Map[String, String]]("id")
+    val imageUrl = user.asInstanceOf[Map[String, Map[String, Map[String, String]]]]("picture")("data")("url")
+    
+    session("user") = User(id, name, imageUrl, link)
+    println(User(id, name, imageUrl, link))
+    
+    redirect("/")
+  }
+
   post("/events/create") {
     val startdate = params("startdate").split(":").map(_.toInt)
     val enddate = params("enddate").split(":").map(_.toInt)
@@ -49,8 +91,8 @@ class WebFront extends BasicServlet {
       place = params("place"),
       startDatetime = time(startdate(0), startdate(1)),
       endDatetime = time(enddate(0), enddate(1)),
-      owner = User("testuser01"),
-      users = Set(User("testuser02"), User("testuser03")))
+      owner = User("1","testuser01"),
+      users = Set(User("2","testuser02"), User("3","testuser03")))
     EventDao.save(event)
 
     redirect("/")
@@ -59,7 +101,8 @@ class WebFront extends BasicServlet {
   post("/events/join/:oid") {
     val oid = new ObjectId(params("oid"))
     val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }
-    EventDao.save(event.join(User("user05", "", "")))
+    val user = session("user").asInstanceOf[User]
+    EventDao.save(event.join(user))
     redirect("/")
   }
 

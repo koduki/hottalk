@@ -9,7 +9,7 @@ import com.mongodb.casbah.Imports._
 import com.mongodb.casbah.MongoConnection
 import java.util.Date
 
-case class User(val name: String, val imageUrl: String = "", val url: String = "")
+case class User(@Key("_id") id: String, val name: String, val imageUrl: String = "", val url: String = "")
 case class Event(
   @Key("_id") id: ObjectId = new ObjectId,
   val title: String,
