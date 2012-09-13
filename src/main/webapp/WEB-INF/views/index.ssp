@@ -9,13 +9,13 @@
             <li data-role="fieldcontain">
                 <table>
                     <tr>
-                        <td><img widht＝"42px" height="42px" onclick="document.location='user.html'" src="miwa.jpg"></td>
-                        <td><span style="color: green">現在 ${event.users.size}人 (最小${event.minNumber}人, 最大${event.maxNumber}人)</span></td>
+                        <td><img widht＝"42px" height="42px" onclick="document.location='/event/${event.id}'" src="${event.owner.imageUrl}"></td>
+                        <td><span onclick="document.location='/event/${event.id}'" style="color: green">現在 ${event.users.size}人 (最小${event.minNumber}人, 最大${event.maxNumber}人)</span></td>
                     </tr>
                     <tr>
                         <td valign="top"></td>
                         <td colspan="2"><h4>${event.place}</h4>
-                        <p style="margin-top: 10px">
+                        <p onclick="document.location='/event/${event.id}'" style="margin-top: 10px">
                             ${event.detail}
                         </p></td>
                     </tr>

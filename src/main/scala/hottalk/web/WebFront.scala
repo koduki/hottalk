@@ -91,8 +91,8 @@ class WebFront extends BasicServlet {
       place = params("place"),
       startDatetime = time(startdate(0), startdate(1)),
       endDatetime = time(enddate(0), enddate(1)),
-      owner = User("1","testuser01"),
-      users = Set(User("2","testuser02"), User("3","testuser03")))
+      owner = session("user").asInstanceOf[User],
+      users = Set())
     EventDao.save(event)
 
     redirect("/")
@@ -103,7 +103,7 @@ class WebFront extends BasicServlet {
     val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }
     val user = session("user").asInstanceOf[User]
     EventDao.save(event.join(user))
-    redirect("/")
+    redirect("/event/" + oid)
   }
 
   notFound {

@@ -21,7 +21,7 @@
                 <tr>
                     <td valign="top"><h4>主催者</h4>
                     <p>
-                        <img onclick="document.location='user.html'" src="miwa.jpg" width="120px" height="120px">
+                        <img onclick="document.location='${event.owner.url}'" src="${event.owner.imageUrl}" width="120px" height="120px">
                         <div>
                             ${event.owner.name}
                         </div>
@@ -30,7 +30,7 @@
                     <ul>
                         #for (user <- event.users)
                         <li style="list-style-type:none">
-                            <img onclick="document.location='user.html'"  widht＝"42px" height="42px"  src="hara.jpg">
+                            <img onclick="document.location='${user.url}'" widht＝"42px" height="42px"  src="${user.imageUrl}">
                             <div>
                                 ${user.name}
                             </div>
