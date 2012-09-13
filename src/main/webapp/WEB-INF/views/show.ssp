@@ -1,0 +1,63 @@
+<%@ var event:cn.orz.pascal.hottalk.models.Event %>
+<div data-role="content" style="padding: 15px">
+    <ul data-role="listview" data-divider-theme="" data-inset="true">
+        <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-d ui-corner-top">
+            ${event.title}
+        </li>
+        <li data-role="fieldcontain">
+            <table>
+                <tr>
+                    <td></td> </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><h4>${event.place}</h4>
+                    <p style="margin-top: 10px">
+                        ${event.detail}
+                    </p></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td valign="top"><h4>主催者</h4>
+                    <p>
+                        <img onclick="document.location='user.html'" src="miwa.jpg" width="120px" height="120px">
+                        <div>
+                            ${event.owner.name}
+                        </div>
+                    </p></td>
+                    <td align="center"><h4>参加者一覧</h4>
+                    <ul>
+                        #for (user <- event.users)
+                        <li style="list-style-type:none">
+                            <img onclick="document.location='user.html'"  widht＝"42px" height="42px"  src="hara.jpg">
+                            <div>
+                                ${user.name}
+                            </div>
+                        </li>
+                        #end
+                    </ul></td>
+                </tr>
+            </table>
+            <div data-role="fieldcontain">
+                <label for="name">人数:</label>
+                現在 ${event.users.size}人 (最小${event.minNumber}人, 最大${event.maxNumber}人)
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">開始時間:</label>
+                ${event.startDatetime}
+            </div>
+            <div data-role="fieldcontain">
+                <label for="name">終了時間:</label>
+                ${event.endDatetime}
+            </div>
+
+        </li>
+    </ul>
+    <div align="center">
+        <form action="/events/join/${event.id}" method="post">
+            <input type="submit" value="参加する" />
+        </form>
+    </div>
+</div>
+
