@@ -1,3 +1,7 @@
+import com.typesafe.startscript.StartScriptPlugin
+    
+seq(StartScriptPlugin.startScriptForClassesSettings: _*)
+
 organization := "cn.orz.pascal"
 
 name := "HotTalk"
@@ -12,6 +16,7 @@ libraryDependencies ++= Seq(
   "org.scalatra" %% "scalatra" % "2.0.1",
   "org.scalatra" %% "scalatra-scalate" % "2.0.1",
   "org.eclipse.jetty" % "jetty-webapp" % "8.0.1.v20110908" % "container",
+  "org.eclipse.jetty" % "jetty-webapp" % "7.6.0.v20120127" % "compile",
   "javax.servlet" % "servlet-api" % "2.5" % "provided",
   "org.clapper" % "sbt-markdown-plugin" % "0.3.1"
 )

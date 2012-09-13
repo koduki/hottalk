@@ -1,2 +1,6 @@
 .*swp
 config.scala
+target
+project/boot
+project/target
+project/plugins/target
