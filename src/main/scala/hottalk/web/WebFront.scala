@@ -44,7 +44,7 @@ class WebFront extends BasicServlet {
     import org.scribe.builder._
     import org.scribe.model._
 
-    val callbackUrl = "http://localhost:8080/facebook/callback"
+    val callbackUrl = "http://hottalk.herokuapp.com/facebook/callback"
     val service = new ServiceBuilder().provider((new FacebookApi).getClass).apiKey("361347227278534").apiSecret("817a2ff8fe2d99045406ad5ea33828a0").callback(callbackUrl).build
     val redirectUrl = service.getAuthorizationUrl(null)
     session("service") = service

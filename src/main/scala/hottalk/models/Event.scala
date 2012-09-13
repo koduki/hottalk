@@ -7,6 +7,7 @@ import com.novus.salat.annotations._
 import com.novus.salat.dao._
 import com.mongodb.casbah.Imports._
 import com.mongodb.casbah.MongoConnection
+import com.mongodb.casbah.MongoURI
 import java.util.Date
 
 case class User(@Key("_id") id: String, val name: String, val imageUrl: String = "", val url: String = "")
@@ -26,5 +27,21 @@ case class Event(
   }
 
 }
+object createMongoCoonnection {
+  def apply() = {
+    import com.novus.salat._
+    import com.novus.salat.global._
+    import com.novus.salat.annotations._
+    import com.novus.salat.dao._
+    import com.mongodb.casbah.Imports._
+    import com.mongodb.casbah.MongoConnection
+    import com.mongodb.casbah.MongoURI
 
-object EventDao extends SalatDAO[Event, ObjectId](collection = MongoConnection()("test")("events"))
+    val uri = MongoURI("mongodb://heroku23:intex8080@alex.mongohq.com:10063/app7562613")
+    val mongo = MongoConnection(uri)
+    val db = mongo(uri.database)
+    db.authenticate(uri.username, uri.password.foldLeft("")(_ + _.toString))
+    db
+  }
+}
+object EventDao extends SalatDAO[Event, ObjectId](collection = createMongoCoonnection()("events"))
