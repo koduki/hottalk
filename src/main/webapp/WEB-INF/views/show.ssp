@@ -47,10 +47,6 @@
                 <label for="name">開始時間:</label>
                 ${event.startDatetime}
             </div>
-            <div data-role="fieldcontain">
-                <label for="name">終了時間:</label>
-                ${event.endDatetime}
-            </div>
 
         </li>
     </ul>

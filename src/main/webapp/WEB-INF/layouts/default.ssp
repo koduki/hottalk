@@ -22,10 +22,10 @@
                     <tr>
                         <td align="center"><img onclick="document.location='/'" widht="32px" height="32px" src="/images/53-house.png" />
                         <br />
-                        <span style="color: #999999; font-size: smaller">ホーム</span></td>
+                        <span style="color: #EEEEEE; font-size: smaller">ホーム</span></td>
                         <td align="center"><img onclick="document.location='/events/new'" widht="32px" height="32px" src="/images/09-chat-2.png" />
                         <br />
-                        <span style="color: #999999; font-size: smaller">登録</span></td>
+                        <span style="color: #EEEEEE; font-size: smaller">登録</span></td>
                     </tr>
                 </table>
             </div>

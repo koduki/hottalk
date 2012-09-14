@@ -66,23 +66,22 @@ class WebFront extends BasicServlet {
     service.signRequest(token, request)
 
     val response = request.send()
-    
+
     import scala.util.parsing.json.JSON;
-    val user = JSON.parseFull(response.getBody())  match {case Some(x) => x; case None => ""}
+    val user = JSON.parseFull(response.getBody()) match { case Some(x) => x; case None => "" }
     val name = user.asInstanceOf[Map[String, String]]("name")
     val link = user.asInstanceOf[Map[String, String]]("link")
     val id = user.asInstanceOf[Map[String, String]]("id")
     val imageUrl = user.asInstanceOf[Map[String, Map[String, Map[String, String]]]]("picture")("data")("url")
-    
+
     session("user") = User(id, name, imageUrl, link)
     println(User(id, name, imageUrl, link))
-    
+
     redirect("/")
   }
 
   post("/events/create") {
     val startdate = params("startdate").split(":").map(_.toInt)
-    val enddate = params("enddate").split(":").map(_.toInt)
     val event = Event(
       title = params("title"),
       detail = params("detail"),
@@ -90,7 +89,7 @@ class WebFront extends BasicServlet {
       maxNumber = params("min_number").toInt,
       place = params("place"),
       startDatetime = time(startdate(0), startdate(1)),
-      endDatetime = time(enddate(0), enddate(1)),
+      endDatetime = time(startdate(0), startdate(1)),
       owner = session("user").asInstanceOf[User],
       users = Set())
     EventDao.save(event)

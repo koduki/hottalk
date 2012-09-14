@@ -93,57 +93,27 @@
                 </select>
             </div>
             <div data-role="fieldcontain">
-                <label for="enddate">終了時間:</label>
-                <select name="enddate" id="enddate" data-mini="true">
-                    <option value="13:00">13:00</option>
-                    <option value="13:15">13:15</option>
-                    <option value="13:30">13:30</option>
-                    <option value="13:45">13:45</option>
-                    <option value="14:00">14:00</option>
-                    <option value="14:15">14:15</option>
-                    <option value="14:30">14:30</option>
-                    <option value="14:45">14:45</option>
-                    <option value="15:00">15:00</option>
-                    <option value="15:15">15:15</option>
-                    <option value="15:30">15:30</option>
-                    <option value="15:45">15:45</option>
-                    <option value="16:00">16:00</option>
-                    <option value="16:15">16:15</option>
-                    <option value="16:30">16:30</option>
-                    <option value="16:45">16:45</option>
-                    <option value="17:00">17:00</option>
-                    <option value="17:15">17:15</option>
-                    <option value="17:30">17:30</option>
-                    <option value="17:45">17:45</option>
-                    <option value="18:00">18:00</option>
-                    <option value="18:15">18:15</option>
-                    <option value="18:30">18:30</option>
-                    <option value="18:45">18:45</option>
-                    <option value="19:00">19:00</option>
-                    <option value="19:15">19:15</option>
-                    <option value="19:30">19:30</option>
-                    <option value="19:45">19:45</option>
-                    <option value="20:00">20:00</option>
-                    <option value="20:15">20:15</option>
-                    <option value="20:30">20:30</option>
-                    <option value="20:45">20:45</option>
-                    <option value="21:00">21:00</option>
-                    <option value="21:15">21:15</option>
-                    <option value="21:30">21:30</option>
-                    <option value="21:45">21:45</option>
-                    <option value="22:00">22:00</option>
-                    <option value="22:15">22:15</option>
-                    <option value="22:30">22:30</option>
-                    <option value="22:45">22:45</option>
-                    <option value="23:00">23:00</option>
-                    <option value="23:15">23:15</option>
-                    <option value="23:30">23:30</option>
-                    <option value="23:45">23:45</option>
-                </select>
-            </div>
-            <div data-role="fieldcontain">
                 <label for="place">集合場所:</label>
-                <input type="text" name="place" id="name" text="" />
+                <select name="place" id="name" data-mini="true">
+                    <option value="フードコート周辺">フードコート周辺</option>
+                    <option value="Aステージ周辺">Aステージ周辺</option>
+                    <option value="Bステージ周辺">Bステージ周辺</option>
+                    <option value="Cステージ周辺">Cステージ周辺</option>
+                    <option value="Dステージ周辺">Dステージ周辺</option>
+                    <option value="Eステージ周辺">Eステージ周辺</option>
+                    <option value="Fステージ周辺">Fステージ周辺</option>
+                    <option value="Gステージ周辺">Gステージ周辺</option>
+                    <option value="Hステージ周辺">Hステージ周辺</option>
+                    <option value="Iステージ周辺">Iステージ周辺</option>
+                    <option value="Jステージ周辺">Jステージ周辺</option>
+                    <option value="Kステージ周辺">Kステージ周辺</option>
+                    <option value="Lステージ周辺">Lステージ周辺</option>
+                    <option value="Mステージ周辺">Mステージ周辺</option>
+                    <option value="Nステージ周辺">Nステージ周辺</option>
+                    <option value="Oステージ周辺">Oステージ周辺</option>
+                    <option value="204通路周辺">204通路周辺</option>
+                    <option value="一般入場口周辺">一般入場口周辺</option>
+                </select>
             </div>
         </div>
         <input type="submit" value="登録" />
