@@ -57,7 +57,7 @@
     </div>
     <div align="center">
         <form action="/events/comment/${event.id}" method="post">
-            <input type="text" value="">
+            <input name="message" type="text" value="">
             <input type="submit" value="コメントする" />
         </form>
         <ul>
