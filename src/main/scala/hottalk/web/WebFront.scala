@@ -40,7 +40,10 @@ class WebFront extends BasicServlet {
     val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }
     ssp("show", "title" -> "Top:", "event" -> event, "isLogin" -> isLogin)
   }
-
+  get("/logout") {
+    session -= "user"
+    redirect("/")
+  }
   get("/login") {
     import org.scribe.oauth._
     import org.scribe.builder.api._

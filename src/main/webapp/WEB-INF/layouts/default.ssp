@@ -18,7 +18,7 @@
                 <h3><a href="/" style="text-decoration:none;color:white">HotTalk</a></h3>
                 <p>
                     #if(isLogin)
-                        ようこそ #{user.name} さん <a onclick="document.location='/logout'">ログアウト</a>
+                    <a onclick="document.location='/logout'">ログアウト</a>
                     #else
                     <a onclick="document.location='/login'">Facebookでログイン</a>
                     #end
