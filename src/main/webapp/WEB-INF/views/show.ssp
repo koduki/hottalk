@@ -1,10 +1,14 @@
 <%@ var event:cn.orz.pascal.hottalk.models.Event %>
 <%@ var isLogin: Boolean %>
+<%@ var isDelete: Boolean %>
 
 <div data-role="content" style="padding: 15px">
     <ul data-role="listview" data-divider-theme="" data-inset="true">
         <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-d ui-corner-top">
-            ${event.title}
+            <span>${event.title}</span>
+            #if (isDelete)
+            <a href="/events/delete/${event.id}">削除</a>
+            #end
         </li>
         <li data-role="fieldcontain">
             <table>
@@ -53,7 +57,9 @@
     </ul>
     <div align="center">
         <form action="/events/join/${event.id}" method="post">
+            #if(event.maxNumber > event.users.size)
             <input type="submit" value="参加する" />
+            #end
         </form>
     </div>
     <div align="center">

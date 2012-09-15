@@ -41,7 +41,14 @@ class WebFront extends BasicServlet {
   get("/event/:oid") {
     val oid = new ObjectId(params("oid"))
     val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }
-    ssp("show", "title" -> "Top:", "event" -> event, "isLogin" -> isLogin)
+    val isDelete = if(isLogin){
+      val self = session("user").asInstanceOf[User]
+      (self.id == event.owner.id) || self.name == "Keiko Miwa"
+    }else{
+      false
+    }
+
+    ssp("show", "title" -> "Top:", "event" -> event, "isLogin" -> isLogin, "isDelete" -> isDelete)
   }
   get("/logout") {
     session -= "user"
@@ -134,6 +141,16 @@ class WebFront extends BasicServlet {
     val user = session("user").asInstanceOf[User]
     EventDao.save(event.comment(user, message))
     redirect("/event/" + oid)
+  }
+  post("/events/delete/:oid") {
+    if (!isLogin) {
+      redirect("/autherror")
+    }
+    val oid = new ObjectId(params("oid"))
+    val message = params("message")
+    val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }
+    EventDao.remove(event)
+    redirect("/events/")
   }
   notFound {
     findTemplate(requestPath) map { path =>
