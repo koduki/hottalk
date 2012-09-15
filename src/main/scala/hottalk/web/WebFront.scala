@@ -32,6 +32,9 @@ class WebFront extends BasicServlet {
   }
 
   get("/events/new") {
+    if (!isLogin) {
+      redirect("/autherror")
+    }
     ssp("new", "title" -> "Top:", "isLogin" -> isLogin)
   }
 
@@ -87,6 +90,9 @@ class WebFront extends BasicServlet {
   }
 
   post("/events/create") {
+    if (!isLogin) {
+      redirect("/autherror")
+    }
     val startdate = params("startdate").split(":").map(_.toInt)
     val event = Event(
       title = params("title"),
@@ -104,7 +110,14 @@ class WebFront extends BasicServlet {
     redirect("/")
   }
 
+  get("/autherror") {
+    ssp("autherror", "title" -> "Error:", "isLogin" -> isLogin)
+  }
+
   post("/events/join/:oid") {
+    if (!isLogin) {
+      redirect("/autherror")
+    }
     val oid = new ObjectId(params("oid"))
     val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }
     val user = session("user").asInstanceOf[User]
@@ -112,6 +125,9 @@ class WebFront extends BasicServlet {
     redirect("/event/" + oid)
   }
   post("/events/comment/:oid") {
+    if (!isLogin) {
+      redirect("/autherror")
+    }
     val oid = new ObjectId(params("oid"))
     val message = params("message")
     val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }

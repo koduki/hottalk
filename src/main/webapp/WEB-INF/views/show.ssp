@@ -1,4 +1,5 @@
 <%@ var event:cn.orz.pascal.hottalk.models.Event %>
+<%@ var isLogin: Boolean %>
 
 <div data-role="content" style="padding: 15px">
     <ul data-role="listview" data-divider-theme="" data-inset="true">
@@ -58,11 +59,15 @@
     <div align="center">
         <form action="/events/comment/${event.id}" method="post">
             <input name="message" type="text" value="">
+            #if(isLogin)
             <input type="submit" value="コメントする" />
+            #else
+            <input type="button" onlick="alert('ログインしてください');" value="コメントする" />
+            #end
         </form>
         <ul>
              #for (comment <- event.comments)
-            <li>${comment.name} : ${comment.message}</li>
+            <li style="list-style-type: none;">${comment.name} : ${comment.message}</li>
             #end
         </ul>
     </div>
