@@ -1,4 +1,5 @@
 <%@ var body: String %>
+<%@ var isLogin: Boolean %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +16,13 @@
         <div data-role="page" id="page1">
             <div data-theme="a" data-role="header">
                 <h3><a href="/" style="text-decoration:none;color:white">HotTalk</a></h3>
-                  <a onclick="document.location='/login'">Facebookでログイン</a>
+                <p>
+                    #if(isLogin)
+                        ようこそ #{user.name} さん <a onclick="document.location='/logout'">ログアウト</a>
+                    #else
+                    <a onclick="document.location='/login'">Facebookでログイン</a>
+                    #end
+                </p>
             </div>
             ${unescape(body)}
             <div data-role="footer">

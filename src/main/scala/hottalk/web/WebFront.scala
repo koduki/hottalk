@@ -22,20 +22,23 @@ import java.util.Date
 class WebFront extends BasicServlet {
   //  val config = ConfigReader[MyConfig]("config.scala")
 
+  def isLogin() = {
+    session.contains("user")
+  }
   get("/") {
     info("development mode is " + isDevelopmentMode)
     val events = EventDao.find(MongoDBObject()).toList
-    ssp("index", "title" -> "Top:", "events" -> events)
+    ssp("index", "title" -> "Top:", "events" -> events, "isLogin" -> isLogin)
   }
 
   get("/events/new") {
-    ssp("new", "title" -> "Top:")
+    ssp("new", "title" -> "Top:", "isLogin" -> isLogin)
   }
 
   get("/event/:oid") {
     val oid = new ObjectId(params("oid"))
     val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }
-    ssp("show", "title" -> "Top:", "event" -> event)
+    ssp("show", "title" -> "Top:", "event" -> event, "isLogin" -> isLogin)
   }
 
   get("/login") {
