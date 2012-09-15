@@ -147,10 +147,9 @@ class WebFront extends BasicServlet {
       redirect("/autherror")
     }
     val oid = new ObjectId(params("oid"))
-    val message = params("message")
     val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }
     EventDao.remove(event)
-    redirect("/events/")
+    redirect("/")
   }
   notFound {
     findTemplate(requestPath) map { path =>
