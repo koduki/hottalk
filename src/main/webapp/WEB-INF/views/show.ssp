@@ -7,7 +7,7 @@
         <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-d ui-corner-top">
             <span>${event.title}</span>
             #if (isDelete)
-            <a href="/events/delete/${event.id}">削除</a>
+            <a href="" onclick="document.location='/'">削除</a>
             #end
         </li>
         <li data-role="fieldcontain">

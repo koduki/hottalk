@@ -142,7 +142,7 @@ class WebFront extends BasicServlet {
     EventDao.save(event.comment(user, message))
     redirect("/event/" + oid)
   }
-  post("/events/delete/:oid") {
+  get("/events/delete/:oid") {
     if (!isLogin) {
       redirect("/autherror")
     }
