@@ -1,4 +1,5 @@
 <%@ var event:cn.orz.pascal.hottalk.models.Event %>
+
 <div data-role="content" style="padding: 15px">
     <ul data-role="listview" data-divider-theme="" data-inset="true">
         <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-d ui-corner-top">
@@ -47,13 +48,23 @@
                 <label for="name">開始時間:</label>
                 ${event.startDatetime}
             </div>
-
         </li>
     </ul>
     <div align="center">
         <form action="/events/join/${event.id}" method="post">
             <input type="submit" value="参加する" />
         </form>
+    </div>
+    <div align="center">
+        <form action="/events/comment/${event.id}" method="post">
+            <input type="text" value="">
+            <input type="submit" value="コメントする" />
+        </form>
+        <ul>
+             #for (comment <- event.comments)
+            <li>${comment.name} : ${comment.message}</li>
+            #end
+        </ul>
     </div>
 </div>
 

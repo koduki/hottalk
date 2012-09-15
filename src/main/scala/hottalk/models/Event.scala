@@ -10,6 +10,7 @@ import com.mongodb.casbah.MongoConnection
 import com.mongodb.casbah.MongoURI
 import java.util.Date
 
+case class Comment(val name: String, val message: String = "")
 case class User(@Key("_id") id: String, val name: String, val imageUrl: String = "", val url: String = "")
 case class Event(
   @Key("_id") id: ObjectId = new ObjectId,
@@ -21,9 +22,14 @@ case class Event(
   val startDatetime: Date,
   val endDatetime: Date,
   val owner: User,
-  val users: Set[User]) {
+  val users: Set[User],
+  val comments:List[Comment]) {
   def join(user: User): Event = {
-    Event(this.id, this.title, this.detail, this.minNumber, this.maxNumber, this.place, this.startDatetime, this.endDatetime, this.owner, this.users + user)
+    Event(this.id, this.title, this.detail, this.minNumber, this.maxNumber, this.place, this.startDatetime, this.endDatetime, this.owner, this.users + user, this.comments)
+  }
+  def comment(user:User, message:String) : Event = {
+    val comments = List(Comment(name = user.name, message = message))
+    Event(this.id, this.title, this.detail, this.minNumber, this.maxNumber, this.place, this.startDatetime, this.endDatetime, this.owner, this.users + user, comments ++ this.comments)
   }
 
 }

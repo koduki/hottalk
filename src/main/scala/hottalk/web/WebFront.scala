@@ -97,7 +97,8 @@ class WebFront extends BasicServlet {
       startDatetime = time(startdate(0), startdate(1)),
       endDatetime = time(startdate(0), startdate(1)),
       owner = session("user").asInstanceOf[User],
-      users = Set())
+      users = Set(),
+      comments = List())
     EventDao.save(event)
 
     redirect("/")
@@ -110,7 +111,14 @@ class WebFront extends BasicServlet {
     EventDao.save(event.join(user))
     redirect("/event/" + oid)
   }
-
+  post("/events/comment/:oid") {
+    val oid = new ObjectId(params("oid"))
+    val message = params("message")
+    val event = EventDao.findOneByID(oid) match { case Some(x) => x; case _ => null }
+    val user = session("user").asInstanceOf[User]
+    EventDao.save(event.comment(user, message))
+    redirect("/event/" + oid)
+  }
   notFound {
     findTemplate(requestPath) map { path =>
       contentType = "text/html"
